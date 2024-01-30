@@ -68,15 +68,12 @@
      <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
      <Compile Include="Assets\MazeGenerator.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\MeshSave.cs" />
-     <Compile Include="Assets\RectTransformExtension.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\ColorSave.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\SaveGameWeb.cs" />
      <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
      <Compile Include="Assets\BugController.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\QuaternionSave.cs" />
      <Compile Include="Assets\StageGenerator.cs" />
-     <Compile Include="Assets\GameData.cs" />
-     <Compile Include="Assets\GridLayoutReverser.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Joystick Pack\Scripts\Joysticks" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
