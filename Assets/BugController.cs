@@ -14,13 +14,22 @@ public class BugController : MonoBehaviour
     private AIDestinationSetter aiDestinationSetter;
     
     
-    public float moveSpeed = 5f;
+    public float moveSpeed = 10f;
 
     private Rigidbody2D rb;
 
     private bool isAuto;
 
     private Joystick joystick;
+    private bool isMoving = false;
+    private Vector2 moveDirection;
+    public float raycastDistance = 1.0f;
+    public LayerMask wallLayer;
+
+    public bool notAtOpen;
+    private bool disableRaycast;
+
+    private bool isVerticalMove;
     void Start()
     {
         aiPath.enabled = false;
@@ -44,28 +53,119 @@ public class BugController : MonoBehaviour
         
     }
 
-    void FixedUpdate()
+    void Update()
+    
     {
-        if (!aiPath.enabled)
+        if (!disableRaycast)
         {
-            float horizontalInput = joystick.Horizontal;
-            float verticalInput = joystick.Vertical;
-
-            Vector2 movement = new Vector2(horizontalInput, verticalInput);
-            movement.Normalize(); // Ensure diagonal movement isn't faster
-
-            rb.velocity = movement * moveSpeed;
-
-            if (movement != Vector2.zero)
+            
+            // Determine the raycast directions based on movement
+            Vector2 raycastDirection1, raycastDirection2;
+            if (isVerticalMove)
             {
-                float angle = Mathf.Atan2(-movement.x, movement.y) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                raycastDirection1 = Vector2.left;
+                raycastDirection2 = Vector2.right;
+            }
+            else
+            {
+                raycastDirection1 = Vector2.up;
+                raycastDirection2 = Vector2.down;
+            }
+
+            // Cast rays in the specified directions
+            RaycastHit2D  raycastHit1 = Physics2D.Raycast(transform.position, raycastDirection1, raycastDistance, wallLayer);
+            RaycastHit2D  raycastHit2 = Physics2D.Raycast(transform.position, raycastDirection2, raycastDistance, wallLayer);
+
+            // Visualize the rays in the Scene view
+            Debug.DrawRay(transform.position, raycastDirection1 * raycastDistance, raycastHit1 ? Color.red : Color.green);
+            Debug.DrawRay(transform.position, raycastDirection2 * raycastDistance, raycastHit2 ? Color.red : Color.green);
+
+            // Check if both rays hit something
+            if (raycastHit1.collider != null && raycastHit2.collider != null)
+            {
+                notAtOpen = true;
+            }
+            else
+            {
+                notAtOpen = false;
+            }
+
+       
+
+           
+
+            if (!isMoving)
+            {
+                // Check for input to initiate automatic movement
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    isVerticalMove = true;
+                    notAtOpen = true;
+                    Move(Vector2.up);
+                }
+                else if (Input.GetKeyDown(KeyCode.A))
+                {
+                    isVerticalMove = false;
+                    notAtOpen = true;
+                    Move(Vector2.left);
+                }
+                else if (Input.GetKeyDown(KeyCode.S))
+                {
+                    isVerticalMove = true;
+                    notAtOpen = true;
+                    Move(Vector2.down);
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    isVerticalMove = false;
+                    notAtOpen = true;
+                    Move(Vector2.right);
+                }
+
             }
         }
-       
-        
     }
+
+    void Move(Vector2 direction)
+    {
+        isMoving = true;
+        moveDirection = direction;
+        notAtOpen = true;
+
+   
+        StartCoroutine(StopRayCast());
+        StartCoroutine(AutoMoveCoroutine());
+
+    }
+    IEnumerator StopRayCast()
+    {
+        disableRaycast = true;
+        yield return new WaitForSeconds(0.18f);
+        disableRaycast = false;
+        notAtOpen = false;
+    }
+
  
+    IEnumerator AutoMoveCoroutine()
+    {
+        float startTime = Time.time;
+
+        while (notAtOpen)
+        {
+            // Move the player continuously in the specified direction
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+
+            // Check if the maximum duration has passed
+            if (Time.time - startTime > 2)
+            {
+                break; // Exit the loop after the specified duration
+            }
+            yield return null;
+        }
+        transform.Translate(moveDirection * moveSpeed * 0.025f);
+
+        isMoving = false;
+    }
 
     public void FindPath()
     {
