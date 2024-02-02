@@ -45,10 +45,10 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\Color32Save.cs" />
+     <Compile Include="Assets\Unity-Infinite-Scroll-main\Assets\Scripts\DynamicScrollRect\DynamicScrollRect.cs" />
      <Compile Include="Assets\LevelData.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+     <Compile Include="Assets\Unity-Infinite-Scroll-main\Assets\Scripts\DynamicScrollRect\ScrollItem.cs" />
      <Compile Include="Assets\StageSelect.cs" />
      <Compile Include="Assets\LevelManager.cs" />
      <Compile Include="Assets\Stage.cs" />
@@ -56,81 +56,122 @@
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Encoders\SaveGameSimpleEncoder.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\Vector3Save.cs" />
      <Compile Include="Assets\CellScript.cs" />
+     <Compile Include="Assets\Unity-Infinite-Scroll-main\Assets\Scripts\DynamicScrollRect\ScrollItemData.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Serializers\SaveGameBinarySerializer.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Serializers\SaveGameJsonSerializer.cs" />
+     <Compile Include="Assets\Unity-Infinite-Scroll-main\Assets\Scripts\DynamicScrollRect\ScrollContent.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Serializers\SaveGameXmlSerializer.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\Vector4Save.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\Vector2Save.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Serializers\ISaveGameSerializer.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\SaveGame.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Encoders\ISaveGameEncoder.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
      <Compile Include="Assets\MazeGenerator.cs" />
+     <Compile Include="Assets\Unity-Infinite-Scroll-main\Assets\Scripts\ScrollItemDefault.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\MeshSave.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\ColorSave.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\SaveGameWeb.cs" />
-     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
      <Compile Include="Assets\BugController.cs" />
      <Compile Include="Assets\BayatGames\SaveGameFree\Scripts\Types\QuaternionSave.cs" />
      <Compile Include="Assets\StageGenerator.cs" />
+     <Compile Include="Assets\Unity-Infinite-Scroll-main\Assets\Scripts\DemoUI.cs" />
+     <Compile Include="Assets\ChildObjectRearrange.cs" />
      <Folder Include="Assets" />
-     <Folder Include="Assets\Joystick Pack\Scripts\Joysticks" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Fonts" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
-     <Folder Include="Assets\Joystick Pack\Sprites\Vertical Backgrounds" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Packages\packages-lock.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <Folder Include="Assets\TextMesh Pro\Sprites" />
-     <Folder Include="Assets\Joystick Pack" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Logs\ApiUpdaterCheck.txt" />
      <Folder Include="Assets\TextMesh Pro\Resources\Sprite Assets" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Resources\Style Sheets" />
      <Folder Include="Assets\Sprites\InGame" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
      <Folder Include="Assets\BayatGames" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets" />
      <Folder Include="Assets\BayatGames\SaveGameFree\Plugins" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\Plugins\Demigiant" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders" />
      <Folder Include="Assets\TextMesh Pro\Resources\Fonts &amp; Materials" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
-     <Folder Include="Assets\Joystick Pack\Sprites" />
-     <Folder Include="Assets\Joystick Pack\Scripts\Base" />
      <Folder Include="Assets\BayatGames\SaveGameFree\Scripts\Serializers" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
      <Folder Include="Assets\TextMesh Pro\Resources" />
-     <Folder Include="Assets\Joystick Pack\Prefabs" />
      <Folder Include="Assets\BayatGames\SaveGameFree\Scripts\Encoders" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\ProjectSettings" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\Scenes" />
      <Folder Include="Assets\TextMesh Pro" />
      <Folder Include="Assets\Scenes" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
      <Folder Include="Assets\BayatGames\SaveGameFree\Scripts" />
-     <Folder Include="Assets\Joystick Pack\Scripts" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Packages\manifest.json" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Resources\Fonts &amp; Materials" />
      <Folder Include="Assets\Prefab" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Documentation" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Logs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
      <Folder Include="Assets\Sprites\UI" />
      <None Include="Assets\BayatGames\SaveGameFree\Plugins\FullSerializer.xml" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\ProjectSettings\ProjectVersion.txt" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\Plugins" />
      <Folder Include="Assets\BayatGames\SaveGameFree" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\Scripts" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Sprites" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Resources" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
      <Folder Include="Assets\TextMesh Pro\Shaders" />
      <Folder Include="Assets\TextMesh Pro\Resources\Style Sheets" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
      <Folder Include="Assets\TextMesh Pro\Fonts" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\Scripts\DynamicScrollRect" />
      <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\UserSettings" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Packages" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Resources\Sprite Assets" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro" />
      <Folder Include="Assets\BayatGames\SaveGameFree\Scripts\Types" />
-     <Folder Include="Assets\Joystick Pack\Sprites\All Axis Backgrounds" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\Plugins\Demigiant\DOTween\readme.txt" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\Resources" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Sprites\EmojiOne.json" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
      <None Include="Assets\BayatGames\SaveGameFree\Readme.txt" />
      <Folder Include="Assets\TextMesh Pro\Documentation" />
      <Folder Include="Assets\Sprites" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
-     <Folder Include="Assets\Joystick Pack\Sprites\Horizontal Backgrounds" />
-     <Folder Include="Assets\Joystick Pack\Sprites\Handles" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+     <Folder Include="Assets\Unity-Infinite-Scroll-main\Assets\Plugins\Demigiant\DOTween" />
      <None Include="Assets\TextMesh Pro\Sprites\EmojiOne.json" />
      <Folder Include="Assets\Animation" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
+     <None Include="Assets\Unity-Infinite-Scroll-main\Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.14f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
@@ -373,6 +414,9 @@
      </Reference>
      <Reference Include="Unity.Collections.LowLevel.ILSupport">
      <HintPath>D:\Game\Unity Project\Zitga Test\Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+     </Reference>
+     <Reference Include="DOTween">
+     <HintPath>D:\Game\Unity Project\Zitga Test\Assets\Unity-Infinite-Scroll-main\Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
      </Reference>
      <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
      <HintPath>D:\Game\Unity Project\Zitga Test\Library\PackageCache\com.unity.visualscripting@1.9.1\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
@@ -910,6 +954,10 @@
     <ProjectReference Include="PackageToolsEditor.csproj">
       <Project>{9eba1f68-bde8-d36a-853e-7d69fafbacdf}</Project>
       <Name>PackageToolsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="DOTween.Modules.csproj">
+      <Project>{d8f57716-f00b-3695-3950-7308417264f7}</Project>
+      <Name>DOTween.Modules</Name>
     </ProjectReference>
     <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
       <Project>{db732b30-c499-53c1-322b-aaa2e332a4fc}</Project>

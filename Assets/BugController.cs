@@ -20,16 +20,26 @@ public class BugController : MonoBehaviour
 
     private bool isAuto;
 
-    private Joystick joystick;
     private bool isMoving = false;
     private Vector2 moveDirection;
-    public float raycastDistance = 1.0f;
+    public float raycastDistance = 0.5f;
     public LayerMask wallLayer;
 
-    public bool notAtOpen;
+    public bool AtOpen;
     private bool disableRaycast;
 
+    [SerializeField]
     private bool isVerticalMove;
+
+    private RaycastHit2D raycastHitLeft;
+    private RaycastHit2D raycastHitRight;
+    private RaycastHit2D raycastHitUp;
+    private RaycastHit2D raycastHitDown;
+
+    public Sprite bugHSprite;
+    public Sprite bugVSprite;
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
         aiPath.enabled = false;
@@ -45,12 +55,20 @@ public class BugController : MonoBehaviour
         
         Button moveButton = GameObject.Find("MoveBtn").GetComponent<Button>();
         moveButton.onClick.AddListener(AutoMove);
+        
+        Button moveUpBtn = GameObject.Find("Up").GetComponent<Button>();
+        moveUpBtn.onClick.AddListener(MoveUp);
+        Button moveDownBtn = GameObject.Find("Down").GetComponent<Button>();
+        moveDownBtn.onClick.AddListener(MoveDown);
+        Button moveLeftBtn = GameObject.Find("Left").GetComponent<Button>();
+        moveLeftBtn.onClick.AddListener(MoveLeft);
+        Button moveRightBtn = GameObject.Find("Right").GetComponent<Button>();
+        moveRightBtn.onClick.AddListener(MoveRight);
 
-        joystick = FindObjectOfType<FixedJoystick>();
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Red Dot(Clone)").transform;
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
-        
     }
 
     void Update()
@@ -58,71 +76,89 @@ public class BugController : MonoBehaviour
     {
         if (!disableRaycast)
         {
-            
             // Determine the raycast directions based on movement
-            Vector2 raycastDirection1, raycastDirection2;
-            if (isVerticalMove)
-            {
-                raycastDirection1 = Vector2.left;
-                raycastDirection2 = Vector2.right;
-            }
-            else
-            {
-                raycastDirection1 = Vector2.up;
-                raycastDirection2 = Vector2.down;
-            }
+            Vector2 raycastDirectionLeft, raycastDirectionRight, raycastDirectionUp, raycastDirectionDown;
+
+                raycastDirectionLeft = Vector2.left;
+                raycastDirectionRight = Vector2.right;
+                raycastDirectionUp = Vector2.up;
+                raycastDirectionDown = Vector2.down;
+        
 
             // Cast rays in the specified directions
-            RaycastHit2D  raycastHit1 = Physics2D.Raycast(transform.position, raycastDirection1, raycastDistance, wallLayer);
-            RaycastHit2D  raycastHit2 = Physics2D.Raycast(transform.position, raycastDirection2, raycastDistance, wallLayer);
+             raycastHitLeft = Physics2D.Raycast(transform.position, raycastDirectionLeft, raycastDistance, wallLayer);
+             raycastHitRight = Physics2D.Raycast(transform.position, raycastDirectionRight, raycastDistance, wallLayer);
+             raycastHitUp = Physics2D.Raycast(transform.position, raycastDirectionUp, raycastDistance, wallLayer);
+             raycastHitDown = Physics2D.Raycast(transform.position, raycastDirectionDown, raycastDistance, wallLayer);
 
             // Visualize the rays in the Scene view
-            Debug.DrawRay(transform.position, raycastDirection1 * raycastDistance, raycastHit1 ? Color.red : Color.green);
-            Debug.DrawRay(transform.position, raycastDirection2 * raycastDistance, raycastHit2 ? Color.red : Color.green);
+            Debug.DrawRay(transform.position, raycastDirectionLeft * raycastDistance, raycastHitLeft ? Color.red : Color.green);
+            Debug.DrawRay(transform.position, raycastDirectionRight * raycastDistance, raycastHitRight ? Color.red : Color.green);
+            Debug.DrawRay(transform.position, raycastDirectionUp * raycastDistance, raycastHitUp ? Color.red : Color.green);
+            Debug.DrawRay(transform.position, raycastDirectionDown * raycastDistance, raycastHitDown ? Color.red : Color.green);
 
-            // Check if both rays hit something
-            if (raycastHit1.collider != null && raycastHit2.collider != null)
+            if (isVerticalMove)
             {
-                notAtOpen = true;
+                // Check if all rays hit something
+                if (raycastHitLeft.collider != null && raycastHitRight.collider != null)
+                {
+                    AtOpen = false;
+                }
+                else
+                {
+                    AtOpen = true;
+                }
             }
-            else
-            {
-                notAtOpen = false;
-            }
-
-       
-
-           
-
-            if (!isMoving)
-            {
-                // Check for input to initiate automatic movement
-                if (Input.GetKeyDown(KeyCode.W))
+            else 
+                if (raycastHitUp.collider != null && raycastHitDown.collider != null)
                 {
-                    isVerticalMove = true;
-                    notAtOpen = true;
-                    Move(Vector2.up);
+                    AtOpen = false;
                 }
-                else if (Input.GetKeyDown(KeyCode.A))
+                else
                 {
-                    isVerticalMove = false;
-                    notAtOpen = true;
-                    Move(Vector2.left);
+                    AtOpen = true;
                 }
-                else if (Input.GetKeyDown(KeyCode.S))
-                {
-                    isVerticalMove = true;
-                    notAtOpen = true;
-                    Move(Vector2.down);
-                }
-                else if (Input.GetKeyDown(KeyCode.D))
-                {
-                    isVerticalMove = false;
-                    notAtOpen = true;
-                    Move(Vector2.right);
-                }
+        }
+    }
 
-            }
+    private void MoveUp()
+    {
+        if (!isMoving && raycastHitUp.collider == null)
+        {
+            spriteRenderer.sprite = bugVSprite;
+            spriteRenderer.flipY = false;
+            isVerticalMove = true;
+            Move(Vector2.up);
+        }
+    }
+    private void MoveDown()
+    {
+        if (!isMoving && raycastHitDown.collider == null)
+        {
+            spriteRenderer.sprite = bugVSprite;
+            spriteRenderer.flipY = true;
+            isVerticalMove = true;
+            Move(Vector2.down);
+        }
+    }
+    private void MoveLeft()
+    {
+        if (!isMoving && raycastHitLeft.collider == null)
+        {
+            spriteRenderer.sprite = bugHSprite;
+            spriteRenderer.flipX = true;
+            isVerticalMove = false;
+            Move(Vector2.left);
+        }
+    }
+    private void MoveRight()
+    {
+        if (!isMoving && raycastHitRight.collider == null)
+        {
+            spriteRenderer.sprite = bugHSprite;
+            spriteRenderer.flipX = false;
+            isVerticalMove = false;
+            Move(Vector2.right);
         }
     }
 
@@ -130,42 +166,50 @@ public class BugController : MonoBehaviour
     {
         isMoving = true;
         moveDirection = direction;
-        notAtOpen = true;
-
-   
+        AtOpen = false;
         StartCoroutine(StopRayCast());
         StartCoroutine(AutoMoveCoroutine());
 
+    }
+    IEnumerator AutoMoveCoroutine()
+    {
+        float startTime = Time.time;
+        Vector2 currentMoveDirection = moveDirection;
+
+        while (!AtOpen)
+        {
+            // Move the player continuously in the specified direction
+            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
+
+            // Check if the raycast in the current direction hits something
+            RaycastHit2D currentRaycastHit = Physics2D.Raycast(transform.position, currentMoveDirection, 1f, wallLayer);
+            if (currentRaycastHit.collider != null)
+            {
+                Debug.Log("stop ne");
+                AtOpen = false;
+                break;
+            }
+            
+            // // Check if the maximum duration has passed
+            // if (Time.time - startTime > 2)
+            // {
+            //     break; // Exit the loop after the specified duration
+            // }
+            yield return null;
+        }
+        transform.Translate(moveDirection * moveSpeed * 0.05f);
+
+        isMoving = false;
     }
     IEnumerator StopRayCast()
     {
         disableRaycast = true;
         yield return new WaitForSeconds(0.18f);
         disableRaycast = false;
-        notAtOpen = false;
     }
 
  
-    IEnumerator AutoMoveCoroutine()
-    {
-        float startTime = Time.time;
-
-        while (notAtOpen)
-        {
-            // Move the player continuously in the specified direction
-            transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
-
-            // Check if the maximum duration has passed
-            if (Time.time - startTime > 2)
-            {
-                break; // Exit the loop after the specified duration
-            }
-            yield return null;
-        }
-        transform.Translate(moveDirection * moveSpeed * 0.025f);
-
-        isMoving = false;
-    }
+  
 
     public void FindPath()
     {
@@ -174,9 +218,13 @@ public class BugController : MonoBehaviour
 
     public void AutoMove()
     {
+        spriteRenderer.sprite = bugVSprite;
+        spriteRenderer.flipX = false;
+        spriteRenderer.flipY = false;
+
         Destroy(rb);
         aiPath.enabled = true;
-        aiPath.maxSpeed = 5;
+        aiPath.maxSpeed = moveSpeed;
         aiDestinationSetter.target = target;
         isAuto = true;
 
@@ -185,11 +233,11 @@ public class BugController : MonoBehaviour
     IEnumerator VisualizePathCoroutine()
     {
         Destroy(rb);
-        aiPath.maxSpeed = isAuto ? 5 : 0;
+        aiPath.maxSpeed = isAuto ? moveSpeed : 0;
         aiPath.enabled = true;
         aiDestinationSetter.target = target;
         
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.25f);
         VisualizePath();
 
         if (!isAuto)

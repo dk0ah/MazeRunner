@@ -34,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.664442, y: 13.621874, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0859071aee6aa7e42983e61b25fcb408, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d51236b407b0634d849ee7cd90a760b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,7 +105,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lineRenderer: {fileID: 1245500988566685169}
   aiPath: {fileID: 8279793494202215453}
-  moveSpeed: 8
+  moveSpeed: 15
+  raycastDistance: 2
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  AtOpen: 0
+  isVerticalMove: 0
+  bugHSprite: {fileID: 21300000, guid: 7d51236b407b0634d849ee7cd90a760b, type: 3}
+  bugVSprite: {fileID: 21300000, guid: 0859071aee6aa7e42983e61b25fcb408, type: 3}
 --- !u!120 &1245500988566685169
 LineRenderer:
   serializedVersion: 2
@@ -158,8 +166,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.0023880005
-        value: 0.37368393
+        time: 0
+        value: 0.25663376
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -275,7 +283,7 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 2
-  pickNextWaypointDist: 1.4
+  pickNextWaypointDist: 4
   endReachedDistance: 0.1
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1

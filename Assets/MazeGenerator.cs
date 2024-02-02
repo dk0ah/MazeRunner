@@ -311,7 +311,7 @@ public class MazeGenerator : MonoBehaviour {
 
         // Create an empty parent object to hold the maze in the scene.
         mazeParent = new GameObject();
-        mazeParent.transform.position = Vector2.zero;
+        mazeParent.transform.position = new Vector3(0f, -15f, 0f);
         mazeParent.name = "Maze";
     }
 

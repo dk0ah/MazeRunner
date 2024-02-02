@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6e33b7ca61696408d19f6b38c31df9, type: 3}
   m_Name: StageSelectScriptableObject
   m_EditorClassIdentifier: 
-  stageIndex: 1
+  stageIndex: 63
   isContinue: 0

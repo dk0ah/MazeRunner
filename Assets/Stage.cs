@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BayatGames.SaveGameFree;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -30,12 +31,36 @@ public class Stage : MonoBehaviour
     private RectTransform rectTransform;
 
     [SerializeField] private StageSelect stageSelect;
+    public List<LevelData> levelDataList;
+    private int stageUnlocked;
 
    
 
     private void Start()
     {
-        stageIndexText.text = stageIndex.ToString();
+        stageIndex = GetComponent<ScrollItemDefault>().Index;
+        stageUnlocked = SaveGame.Load<int>("stageUnlocked");
+
+        levelDataList = SaveGame.Load<List<LevelData>>("levelDataList");
+        stageStarAmount = levelDataList[stageIndex].starsEarned;
+        if (stageIndex <= stageUnlocked)
+        {
+            stageIsUnlocked = true;
+        }
+        else
+        {
+            stageIsUnlocked = false;
+        }
+
+        // Check if the current index follows the specified pattern for activating hLineGameObject
+        if ((stageIndex - 7) % 8 == 0 ||  stageIndex % 8 == 0)
+        {
+            hLineGameObject.SetActive(true);
+        }
+        if (stageIndex % 4 == 3)
+        {
+            vLineGameObject.SetActive(true);
+        }
         switch (stageStarAmount)
         {
             case 0: 
